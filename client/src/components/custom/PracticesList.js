@@ -1,5 +1,5 @@
 /* eslint-disable react/destructuring-assignment */
-import React, { Context } from 'react';
+import React from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 

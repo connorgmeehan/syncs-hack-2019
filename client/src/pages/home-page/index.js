@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unused-state */
 /* eslint-disable react/destructuring-assignment */
-import React, { useContext } from 'react';
+import React from 'react';
 import { propType } from 'graphql-anywhere';
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
@@ -24,10 +24,7 @@ import Loading from '../../components/common/loading';
 //------------------------------------------------------------------------------
 // STYLE:
 //------------------------------------------------------------------------------
-const Json = styled.pre`
-  word-wrap: break-word;
-  white-space: pre-wrap;
-`;
+
 
 class HomePage extends React.PureComponent {
   constructor(props) {

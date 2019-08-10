@@ -1,7 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import red from '@material-ui/core/colors/red';
 import green from '@material-ui/core/colors/green';
-import { Input } from '@material-ui/core';
 
 const theme = createMuiTheme({
   spacing: 8,
