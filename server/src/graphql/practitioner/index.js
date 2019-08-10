@@ -62,7 +62,6 @@ const Mutation = {
 
 const Query = {
   practitioner,
-  getAll,
   getPractitionerFromSuburb,
 };
 
