@@ -75,16 +75,16 @@ class HomePage extends React.PureComponent {
         
         <div id="pageScroll">
           <Typography variant="h2">I am looking for a</Typography>
-          <InputBase fullWidth classes={{input: "maintextinput"}} placeholder="specialist" onChange={e => this.setState({service: e.target.value})}/>
+          <InputBase fullWidth classes={{input: "maintextinput"}} placeholder="specialist" onChange={e => this.setState({ suburb: e.target.value })} />
           <Typography variant="h2" className="secondaryText">around this</Typography>
-          <InputBase fullWidth classes={{input: "maintextinput"}} placeholder="suburb" onChange={e => this.setState({suburb: e.target.value})} />
-          <Button className="searchbtn" color="primary" size="large" variant="contained" fullWidth={true} >
+          <InputBase fullWidth classes={{input: "maintextinput"}} placeholder="suburb" onChange={e => this.setState({ speciality: e.target.value })} />
+          <Button onTouchEndCapture={() => this.handleSubmit()} onClick={() => this.handleSubmit()} className="searchbtn" color="primary" size="large" variant="contained" fullWidth={true} >
               Search
             </Button>
           <Typography variant="h3" align="center" className="orText">or</Typography>
-          <Button onClick={e => this.handleSubmit()} className="searchbtn" color="secondary" size="large" variant="contained" fullWidth={true} >
-              Leave a recommendation
-            </Button>
+          <Button className="searchbtn" color="secondary" size="large" variant="contained" fullWidth={true} >
+            Leave a recommendation
+          </Button>
           </div>
 
             <div className="boardTitle">
