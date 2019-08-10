@@ -1,6 +1,7 @@
 const Base = require('./base');
 const User = require('./user');
 const Subscription = require('./subscription');
+const Practice = require('./practice');
 const Practitioner = require('./practitioner');
 const Review = require('./review');
 const Tag = require('./tag');
@@ -10,6 +11,7 @@ const allSchemas = {
   Base,
   User,
   Subscription,
+  Practice,
   Practitioner,
   Review,
   Tag,

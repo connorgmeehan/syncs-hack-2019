@@ -15,9 +15,9 @@ type Query {
 
 type Mutation {
     createReview(
-        userId: String!,
-        userName: String!,
-        practitionerId: String!,
+        userId: String!
+        userName: String!
+        practitionerId: String!
         text: String!
     ): Review
 }
@@ -43,6 +43,7 @@ const getReviewsByUserId = (root, args) => {
   if (!userId) {
     return null;
   }
+  Object.keys(Review).forEach(el => {console.log(el)});
   
   return Review.getReviewsByUserId({ userId });
 };

@@ -10,13 +10,13 @@ type Practitioner {
 
 type Query {
   getPractitionerFromId(practitionerId: String!): Practitioner
-  getPractitionerFromPracticeId(practiceId: String!): [Practitioner]
+  getPractitionersFromPracticeId(practiceId: String!): [Practitioner]
 }
 
 type Mutation {
   createPractitioner(
-      name: String!,
-      description: String!,
+      name: String!
+      description: String!
       imageurl: String
   ): Practitioner
 }
@@ -35,9 +35,9 @@ const getPractitionerFromId = (root, args) => {
   return Practitioner.findById({ _id: practitionerId });
 };
 
-const getPractitionerFromPracticeId = (root, args) => {
+const getPractitionersFromPracticeId = (root, args) => {
   const { practiceId } = args;
-  return Practitioner.getPractitionerFromPracticeId({ practiceId });
+  return Practitioner.getPractitionersFromPracticeId({ practiceId });
 };
 
 // Mutations
@@ -57,7 +57,7 @@ const Mutation = {
 
 const Query = {
   getPractitionerFromId,
-  getPractitionerFromPracticeId,
+  getPractitionersFromPracticeId,
 };
 
 const resolvers = {

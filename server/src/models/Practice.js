@@ -2,29 +2,39 @@ const mongoose = require('mongoose');
 
 const PracticeSchema = mongoose.Schema({
   name: String,
-  specialty: String,
   lat: String,
   lon: String,
   createdAt: { type: Date, default: Date.now },
+  speciality: String,
   suburb: String,
 });
 
-PracticeSchema.static.createPractice = async function ({
-  name, lat, lon, suburb,
+PracticeSchema.statics.newPractice = async function ({
+  name, lat, lon, suburb, speciality,
 }) {
+  console.log('Schema::newPractice', name, lat, lon, suburb, speciality);
   const newPractice = new this({
-    name, lat, lon, suburb,
+    name, lat, lon, suburb, speciality,
   });
   await newPractice.save();
   return newPractice;
 };
 
-PracticeSchema.static.getPracticeBySuburb = async function ({ suburb }) {
+PracticeSchema.statics.getPracticeBy = async function ({ suburb, speciality }) {
+  console.log('Schema::getPraciceBy', suburb, speciality);
+  return this.find({ suburb, speciality });
+};
+
+PracticeSchema.statics.getPracticeById = async function ({ _id }) {
+  return this.findOne({ _id });
+};
+
+PracticeSchema.statics.getPracticeBySuburb = async function ({ suburb }) {
   return this.find({ suburb });
 };
 
 
-PracticeSchema.static.getPracticeBySpeciality = async function ({ speciality }) {
+PracticeSchema.statics.getPracticeBySpeciality = async function ({ speciality }) {
   return this.find({ speciality });
 };
 

@@ -17,21 +17,21 @@ const PractitionerSchema = new mongoose.Schema({
 });
 
 PractitionerSchema.statics.createPractitioner = async function ({
-  name, suburb, lat, lon, description, imageurl,
+  name, practiceId, description, imageurl,
 }) {
   const newPractitioner = new this({
-    name, suburb, lat, lon, description, imageurl,
+    name, practiceId, description, imageurl,
   });
   await newPractitioner.save();
   return newPractitioner;
 };
 
-PractitionerSchema.statics.getPractitionerFromId = function ({ _id }) {
+PractitionerSchema.statics.getPractitionerFromId = async function ({ _id }) {
   console.log(_id);
   return this.findOne({ _id });
 };
 
-PractitionerSchema.statics.getPractitionerFromPracticeId = function ({ practiceId }) {
+PractitionerSchema.statics.getPractitionersFromPracticeId = async function ({ practiceId }) {
   console.log(practiceId);
   // eslint-disable-next-line react/no-this-in-sfc
   return this.find({ practiceId });
