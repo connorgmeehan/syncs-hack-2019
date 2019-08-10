@@ -22,7 +22,7 @@ const PracticesList = ({ suburb, speciality }) => {
   return (
     <Query
       query={PRACTICES_QUERY}
-      variables={{ suburb: 'Wendsleydale', speciality: 'S' }}
+      variables={{ suburb, speciality }}
     >
       {({loading, error, data }) => {
         console.log(data);
