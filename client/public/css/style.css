@@ -147,5 +147,32 @@ form {
 }
 
 .maintextinput {
-  
+    font-family: 'SF Compact Display' !important;
+    font-weight: 700 !important;
+    font-size: 32px !important;
+    line-height: 38px !important;
+    color: #DADDE4 !important;
+}
+
+/* ******** */
+
+.homeText {
+  padding: 20px;
+}
+
+.secondaryText {
+  padding-top: 30px;
+}
+
+.searchbtn {
+  margin-top: 30px !important;
+  text-transform: none !important;
+}
+
+.orText {
+  padding-top: 20px;
+}
+
+.secondaryInitialText, .headingInitialText {
+  padding-bottom: 20px;
 }
