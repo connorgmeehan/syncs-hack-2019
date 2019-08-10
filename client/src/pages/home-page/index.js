@@ -39,9 +39,13 @@ const HomePage = ({ curUser }) => (
       <Typography variant="h5" className="secondaryInitialText">Whether you’ve had a hard time with a healthcare provider before or you’ve never known where to look.</Typography>
       <Typography variant="h5" className="secondaryInitialText">We are the place to start.</Typography>
     
+      <a href="#pageScroll" id="scrollTransition">
+      <svg xmlns="http://www.w3.org/2000/svg" className="downArrow" width="36" height="36" viewBox="0 0 36 36"><path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/></svg>
+      </a>
     </div>
 
     
+    <div id="pageScroll">
       <Typography variant="h2">I am looking for a</Typography>
       <InputBase fullWidth classes={{input: "maintextinput"}} placeholder="specialist" />
       <Typography variant="h2" className="secondaryText">around this</Typography>
@@ -53,22 +57,28 @@ const HomePage = ({ curUser }) => (
       <Button className="searchbtn" color="secondary" size="large" variant="contained" fullWidth={true} >
           Leave a recommendation
         </Button>
+      </div>
 
         <div className="boardTitle">
         <Typography variant="h2">Community Board</Typography>
         </div>
+      
         
-        <Button className="boardTag" color="primary" aria-label="small outlined button group" size="small" variant="contained" >
-          Gay
-        </Button>
-        <Button className="boardTag" color="primary" size="small" variant="contained" >
-          Lesbian
-        </Button>
-        <Button className="boardTag" color="primary" size="small" variant="contained" >
-          Trans
-        </Button>
        
     </div>
+   
+    <div className="boardTagWrapper">
+      <div className="boardTagScroll">
+        <Button className="boardTag" color="primary" size="small" variant="outlined" >Gay</Button>
+        <Button className="boardTag" color="primary" size="small" variant="outlined" >Lesbian</Button>
+        <Button className="boardTag" color="primary" size="small" variant="outlined" >Trans</Button>
+        <Button className="boardTag" color="primary" size="small" variant="outlined" >Bisexual</Button>
+        <Button className="boardTag" color="primary" size="small" variant="outlined" >Non-Binary</Button>
+        <Button className="boardTag" color="primary" size="small" variant="outlined" >Intersex</Button>
+      </div>
+    </div>
+
+    <div className="greyBackground">
 
     <Card className="communityCard">
       <CardContent>
@@ -112,6 +122,8 @@ const HomePage = ({ curUser }) => (
         
       </CardActions>
     </Card>
+
+    </div>
 
     <Json>
       {JSON.stringify(curUser, null, 2)}

@@ -177,6 +177,16 @@ form {
   padding-bottom: 20px;
 }
 
+.initialText {
+  padding-bottom: 40vh;
+  padding-top: 10vh;
+}
+
+#pageScroll {
+  padding-top: 15vh;
+  margin-bottom: 15vh;
+}
+
 .boardTitle {
   padding-top: 100px;
 }
@@ -200,10 +210,41 @@ form {
 }
 
 .communityCard {
-  margin-top: 20px !important;
+  margin-top: 12px !important;
 }
 
 .boardTag {
   margin-right: 10px !important;
   margin-top: 20px !important;
+  text-transform: none !important;
+  display: inline-block !important;
+}
+.boardTagWrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.boardTagScroll {
+
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.greyBackground {
+  background-color: #F2F3F6;
+  min-width: 100vw;
+  margin-left: -16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 36px;
+  padding-top: 6px;
+  margin-top: 12px;
+}
+
+.downArrow {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10vh;
 }

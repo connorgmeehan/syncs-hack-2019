@@ -31,7 +31,7 @@ const theme = createMuiTheme({
 
     h5: {
       fontFamily: 'SF Compact Display',
-      fontWeight: 'Regular',
+      fontWeight: '400',
       fontSize: '12px',
       lineHeight: '18px',
     }
