@@ -45,6 +45,9 @@ const theme = createMuiTheme({
     secondary: {
       main: '#F2F3F6'
     },
+    tag: {
+      main: '#000000',
+    },
   },
   switch: {
     colorPrimary: green[500],
