@@ -3,9 +3,12 @@ import React, { Context } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
+import PracticeCard from './PracticeCard';
+
 const PRACTICES_QUERY = gql`
 query getPracticeBy($suburb: String, $speciality: String) {
   getPracticeBy(suburb:$suburb, speciality: $speciality) {
+    _id
     name
     lat
     lon
@@ -21,9 +24,19 @@ const PracticesList = ({ suburb, speciality }) => {
       query={PRACTICES_QUERY}
       variables={{ suburb: 'Wendsleydale', speciality: 'S' }}
     >
-      {(props) => {
-        console.log(props);
-        return (<h1>dasd</h1>);
+      {({loading, error, data }) => {
+        console.log(data);
+        if(loading) {
+          return <h1>Loading</h1>
+        } 
+          return data.getPracticeBy.map((practice, key) => <PracticeCard key={key}
+            name={practice.name}
+            lat={practice.lat}
+            lon={practice.lon}
+            speciality={practice.speciality}
+            suburb={practice.suburb}
+           /> )
+        
       }}
     </Query>
   );
