@@ -17,10 +17,10 @@ class HeaderTitle extends React.PureComponent {
       <Switch>
         <Route path="/" exact render={() => 
         <>
-          <div class="header-title header__title no--select flex-auto center">
+          <div className="header-title header__title no--select flex-auto center">
             <img className="header-logo" src="img/community_logo.png" alt="logo" />
           </div>
-          <div class="header-right">
+          <div className="header-right">
             <MenuIcon color="error">menu</MenuIcon>
           </div>
         </>} />

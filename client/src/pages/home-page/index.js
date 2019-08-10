@@ -12,6 +12,7 @@ import PushBtn from '../../components/pwa/push-btn';
 import Feedback from '../../components/common/feedback';
 import Alert from '../../components/common/alert';
 import Loading from '../../components/common/loading';
+import MainTextInput from '../../components/MainTextInput';
 //------------------------------------------------------------------------------
 // STYLE:
 //------------------------------------------------------------------------------
@@ -26,7 +27,10 @@ const HomePage = ({ curUser }) => (
   <div>
     <Typography align="center" variant="h2">Home Page</Typography>
     <div className="mb1" />
-    <h3>Current User</h3>
+    <Typography variant="h2">I am looking for a</Typography>
+    <MainTextInput placeholder="specialist" />
+    <Typography variant="h2">around this</Typography>
+    <MainTextInput placeholder="suburb" />
     <Json>
       {JSON.stringify(curUser, null, 2)}
     </Json>
@@ -83,17 +87,17 @@ const HomePage = ({ curUser }) => (
                       }}
                     />
                   ) : (
-                    <SubscribeBtn
-                      disabled={disabled}
-                      onBeforeHook={handleBefore}
-                      onClientCancelHook={handleClientCancel}
-                      onServerErrorHook={handleServerError}
-                      onSuccessHook={() => {
-                        handleSubscriptionChange({ subscribed: true });
-                        handleSuccess();
-                      }}
-                    />
-                  )}
+                      <SubscribeBtn
+                        disabled={disabled}
+                        onBeforeHook={handleBefore}
+                        onClientCancelHook={handleClientCancel}
+                        onServerErrorHook={handleServerError}
+                        onSuccessHook={() => {
+                          handleSubscriptionChange({ subscribed: true });
+                          handleSuccess();
+                        }}
+                      />
+                    )}
                   <div className="my1" />
                   {subscribed && (
                     <PushBtn
