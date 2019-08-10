@@ -1,17 +1,35 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const ReviewSchema = new mongoose.Schema({
-  author: {
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-    },
-    fullName: String,
-  },
+  userId: String,
+  userName: String,
+  practitionerId: String,
   createdAt: { type: Date, default: Date.now },
   text: String,
 });
 
-const Review = new mongoose.Model("Review", reviewSchema);
+ReviewSchema.statics.createReview = async function ({
+  userId, userName, practitionerId, text, tags,
+}) {
+  const newReview = new this({
+    userId, userName, practitionerId, text, tags,
+  });
+  await newReview.save();
+  return newReview;
+}
 
-export default Review;
+ReviewSchema.statics.getReviewsByPractitionerId = async function ({ practitionerId }) {
+  console.log('Review::getReviewsByPractitionerId', practitionerId);
+  return this.find({ practitionerId });
+};
+
+
+ReviewSchema.statics.getReviewsByUserId = async function ({ userId }) {
+  console.log('Review::getReviewsByUserId', userId);
+
+  return this.find({ userId });
+};
+
+const Review = new mongoose.model('Review', ReviewSchema);
+
+module.exports = Review;

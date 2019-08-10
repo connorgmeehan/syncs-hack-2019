@@ -17,6 +17,8 @@
           "__parseLiteral",
         ]
       }
-    ]
+    ],
+    "max-len":"off",
+    "func-names": "off",
   }
 }

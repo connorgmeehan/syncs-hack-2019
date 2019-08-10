@@ -12,6 +12,8 @@
     "react/jsx-one-expression-per-line": "off",
     "indent": ["error", 2],
     "no-console": "off",
+    "max-len":"off",
+    "func-names": "off",
     "no-underscore-dangle": [
       "error",
       {
