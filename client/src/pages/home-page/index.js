@@ -14,6 +14,9 @@ import Alert from '../../components/common/alert';
 import Loading from '../../components/common/loading';
 import InputBase from '@material-ui/core/InputBase';
 import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 
 //------------------------------------------------------------------------------
 // STYLE:
@@ -50,8 +53,65 @@ const HomePage = ({ curUser }) => (
       <Button className="searchbtn" color="secondary" size="large" variant="contained" fullWidth={true} >
           Leave a recommendation
         </Button>
+
+        <div className="boardTitle">
+        <Typography variant="h2">Community Board</Typography>
+        </div>
+        
+        <Button className="boardTag" color="primary" aria-label="small outlined button group" size="small" variant="contained" >
+          Gay
+        </Button>
+        <Button className="boardTag" color="primary" size="small" variant="contained" >
+          Lesbian
+        </Button>
+        <Button className="boardTag" color="primary" size="small" variant="contained" >
+          Trans
+        </Button>
+       
     </div>
 
+    <Card className="communityCard">
+      <CardContent>
+      <div className="communityBoards">
+      <Typography variant="h3" className="boardHeading">My sexuality is degrading my mental health?</Typography>
+        <Typography variant="h5" className="boardName">jaykatt7</Typography>
+        <Typography variant="h5" className="boardTime">21 contributions - 2 days ago</Typography>
+        <Typography variant="h5" className="boardText">People have been asking me if I'm gay all my life, and as of recently I've started saying yes, only because it's the easy … </Typography>
+     
+        </div>
+      </CardContent>
+      <CardActions>
+        
+      </CardActions>
+    </Card>
+
+    <Card className="communityCard">
+      <CardContent>
+      <div className="communityBoards">
+        <Typography variant="h3" className="boardHeading">What's your experience of a perfect date?</Typography>
+        <Typography variant="h5" className="boardName">masoniga11</Typography>
+        <Typography variant="h5" className="boardTime">21 contributions - 2 days ago</Typography>
+        <Typography variant="h5" className="boardText">I’m planning a date this coming weekend and was wondering what the perfect dates you’ve been on? Looking for some inspiration …</Typography>
+      </div>
+      </CardContent>
+      <CardActions>
+        
+      </CardActions>
+    </Card>
+
+    <Card className="communityCard">
+      <CardContent>
+      <div className="communityBoards">
+        <Typography variant="h3" className="boardHeading">Gay people with supportive and accepting families</Typography>
+        <Typography variant="h5" className="boardName">cortez_g</Typography>
+        <Typography variant="h5" className="boardTime">1 contribution - 5 days ago</Typography>
+        <Typography variant="h5" className="boardText">I know it makes no sense but I am mad at them too. I am mad at them for having supportive families. And I know …</Typography>
+      </div>
+      </CardContent>
+      <CardActions>
+        
+      </CardActions>
+    </Card>
 
     <Json>
       {JSON.stringify(curUser, null, 2)}

@@ -176,3 +176,34 @@ form {
 .secondaryInitialText, .headingInitialText {
   padding-bottom: 20px;
 }
+
+.boardTitle {
+  padding-top: 100px;
+}
+
+.boardHeading {
+  line-height: 27px !important;
+  font-weight: 600 !important;
+  /* padding-top: 20px; */
+  /* padding-bottom: 20px; */
+}
+
+.boardTime {
+  font-family: 'SF Compact Text' !important;
+  font-weight: 300 !important;
+  color: #555760 !important;
+}
+
+.boardText {
+  font-weight: 400 !important;
+  padding-top: 20px;
+}
+
+.communityCard {
+  margin-top: 20px !important;
+}
+
+.boardTag {
+  margin-right: 10px !important;
+  margin-top: 20px !important;
+}
