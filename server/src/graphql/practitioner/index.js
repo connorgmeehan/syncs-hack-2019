@@ -1,26 +1,21 @@
 const typeDefs = `
 type Practitioner {
   _id: ID!
+  practiceId: String!
   createdAt: Date!
   name: String!
-  suburb: String!
-  lat: Float
-  lon: Float
   description: String!
   imageurl: String
 }
 
 type Query {
-  practitioner(practitionerId: String!): Practitioner
-  getPractitionerFromSuburb(suburb: String!): [Practitioner]
+  getPractitionerFromId(practitionerId: String!): Practitioner
+  getPractitionerFromPracticeId(practiceId: String!): [Practitioner]
 }
 
 type Mutation {
   createPractitioner(
       name: String!,
-      suburb: String!
-      lat: Float!,
-      lon: Float!,
       description: String!,
       imageurl: String
   ): Practitioner
@@ -30,7 +25,7 @@ type Mutation {
 const Practitioner = require('../../models/Practitioner');
 
 // Queries
-const practitioner = (root, args) => {
+const getPractitionerFromId = (root, args) => {
   const { practitionerId } = args;
 
   if (!practitionerId) {
@@ -40,19 +35,19 @@ const practitioner = (root, args) => {
   return Practitioner.findById({ _id: practitionerId });
 };
 
-const getPractitionerFromSuburb = (root, args) => {
-  const { suburb } = args;
-  return Practitioner.getAllInSuburb({ suburb });
+const getPractitionerFromPracticeId = (root, args) => {
+  const { practiceId } = args;
+  return Practitioner.getPractitionerFromPracticeId({ practiceId });
 };
 
 // Mutations
 const createPractitioner = (root, args) => {
   const {
-    name, suburb, lat, lon, description, imageurl,
+    practiceId, name, description, imageurl,
   } = args;
 
   return Practitioner.createPractitioner({
-    name, suburb, lat, lon, description, imageurl,
+    practiceId, name, description, imageurl,
   });
 };
 
@@ -61,8 +56,8 @@ const Mutation = {
 };
 
 const Query = {
-  practitioner,
-  getPractitionerFromSuburb,
+  getPractitionerFromId,
+  getPractitionerFromPracticeId,
 };
 
 const resolvers = {

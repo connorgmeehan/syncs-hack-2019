@@ -2,10 +2,8 @@
 const mongoose = require('mongoose');
 
 const PractitionerSchema = new mongoose.Schema({
+  practiceId: String,
   name: String,
-  suburb: String,
-  lat: Number,
-  lon: Number,
   description: String,
   imageUrl: String,
   createdAt: { type: Date, default: Date.now },
@@ -28,15 +26,15 @@ PractitionerSchema.statics.createPractitioner = async function ({
   return newPractitioner;
 };
 
-PractitionerSchema.statics.findById = function ({ _id }) {
+PractitionerSchema.statics.getPractitionerFromId = function ({ _id }) {
   console.log(_id);
   return this.findOne({ _id });
 };
 
-PractitionerSchema.statics.getAllInSuburb = function ({ suburb }) {
-  console.log(suburb);
+PractitionerSchema.statics.getPractitionerFromPracticeId = function ({ practiceId }) {
+  console.log(practiceId);
   // eslint-disable-next-line react/no-this-in-sfc
-  return this.find({ suburb });
+  return this.find({ practiceId });
 };
 
 const Practitioner = mongoose.model('Practitioner', PractitionerSchema);

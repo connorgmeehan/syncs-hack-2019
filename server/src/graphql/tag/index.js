@@ -16,7 +16,10 @@ type Query {
 
 type Mutation {
   createTag(
+    commentId: String!,
+    practitionerId: String!
     text: String!
+    isEmpathy: !String
   ): Tag
 }
 `;
@@ -26,13 +29,9 @@ const createTag = (root, args) => {
   return Tag.createTag({ text });
 };
 
-const getTagsByCommentId = ({commentId}) => {
-  return Tag.getTagsByCommentId({commentId});
-}
+const getTagsByCommentId = ({ commentId }) => Tag.getTagsByCommentId({ commentId });
 
-const getTagsByPractitionerId = ({practitionerId}) => {
-  return Tag.getTagsByPractitionerId({practitionerId});
-}
+const getTagsByPractitionerId = ({ practitionerId }) => Tag.getTagsByPractitionerId({ practitionerId });
 
 const Mutation = {
   createTag,

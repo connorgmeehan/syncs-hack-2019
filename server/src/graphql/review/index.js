@@ -20,10 +20,6 @@ type Mutation {
         userName: String!
         practitionerId: String!
         text: String!
-        tags: [ {
-          text: String
-          isEmpathy: Boolean
-        }]
     ): Review
 }
 `;
