@@ -9,6 +9,7 @@ import client from '../graphql/apollo-client';
 import scTheme from '../theme/sc';
 import muiTheme from '../theme/mui';
 import GlobalDataProvider from '../global-data-provider';
+import AppDataProvider from '../app-data-provider';
 
 // Given that we are implementing App Shell Architecture and, therefore,
 // injecting (via reactDOM.render) the Header and Main components into
@@ -29,7 +30,9 @@ const App = ({ component: Component }) => (
       <ApolloProvider client={client}>
         <MuiThemeProvider theme={muiTheme}>
           <GlobalDataProvider>
-            <Component />
+            <AppDataProvider>
+              <Component />
+            </AppDataProvider>
           </GlobalDataProvider>
         </MuiThemeProvider>
       </ApolloProvider>

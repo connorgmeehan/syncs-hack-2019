@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { propType } from 'graphql-anywhere';
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
+import FormControl from '@material-ui/core/FormControl';
+import Button from '@material-ui/core/Button';
+import AppDataProvider from '../../app-data-provider';
 import { PWABtnProps, FormProps } from '../../render-props';
 import { withUser } from '../../global-data-provider';
 import userFragment from '../../graphql/user/fragment/user';
@@ -68,85 +71,122 @@ const HomePage = ({ curUser }) => (
           handleSubscriptionChange,
         } = pwaBtnProps;
 
-        return (
-          <FormProps>
-            {({
-              disabled,
-              errorMsg,
-              successMsg,
-              handleBefore,
-              handleClientCancel,
-              handleServerError,
-              handleSuccess,
-            }) => {
-              // Display loading indicator while checking for push support
-              if (supported === 'loading') {
-                return <Loading />;
-              }
+  onSearchSubmit() {
+    console.log('onSearchSubmit');
+    if (this.specialist && this.suburb) {
+      const { setSuburbAndState } = useContext(AppDataProvider);
+      console.log(setSuburbAndState);
+    }
+  }
 
-              // Do not render subscribe and push notification buttons in case
-              // notifications aren't supported
-              if (!supported) {
-                return (
-                  <Alert
-                    type="error"
-                    content="Your browser doesn't support service workers"
-                  />
-                );
-              }
+  render() {
+    const { curUser } = this.props;
+    return (
+      <div>
+        <Typography align="center" variant="h2">Home Page</Typography>
+        <div className="mb1" />
+        <FormControl>
+          <Typography variant="h2">I am looking for a</Typography>
+          <MainTextInput placeholder="specialist" onChange={e => this.setState({ specialist: e.target.value })} />
+          <Typography variant="h2">around this</Typography>
+          <MainTextInput placeholder="suburb" onChange={e => this.setState({ suburb: e.target.value })} />
+          <Button onClick={() => {console.log('e')}}>Search</Button>
+        </FormControl>
+        <Json>
+          {JSON.stringify(curUser, null, 2)}
+        </Json>
+        <div className="mb2" />
+        <LogoutBtn />
+        <div className="mb2" />
+        <PWABtnProps>
+          {(pwaBtnProps) => {
+            const {
+              supported,
+              subscribed,
+              handleSubscriptionChange,
+            } = pwaBtnProps;
 
-              return (
-                <React.Fragment>
-                  <p>Enable Push notifications</p>
-                  {subscribed ? (
-                    <UnsubscribeBtn
-                      disabled={disabled}
-                      onBeforeHook={handleBefore}
-                      onClientCancelHook={handleClientCancel}
-                      onServerErrorHook={handleServerError}
-                      onSuccessHook={() => {
-                        handleSubscriptionChange({ subscribed: false });
-                        handleSuccess();
-                      }}
-                    />
-                  ) : (
-                      <SubscribeBtn
-                        disabled={disabled}
-                        onBeforeHook={handleBefore}
-                        onClientCancelHook={handleClientCancel}
-                        onServerErrorHook={handleServerError}
-                        onSuccessHook={() => {
-                          handleSubscriptionChange({ subscribed: true });
-                          handleSuccess();
-                        }}
+            return (
+              <FormProps>
+                {({
+                  disabled,
+                  errorMsg,
+                  successMsg,
+                  handleBefore,
+                  handleClientCancel,
+                  handleServerError,
+                  handleSuccess,
+                }) => {
+                // Display loading indicator while checking for push support
+                  if (supported === 'loading') {
+                    return <Loading />;
+                  }
+
+                  // Do not render subscribe and push notification buttons in case
+                  // notifications aren't supported
+                  if (!supported) {
+                    return (
+                      <Alert
+                        type="error"
+                        content="Your browser doesn't support service workers"
                       />
-                    )}
-                  <div className="my1" />
-                  {subscribed && (
-                    <PushBtn
-                      disabled={disabled}
-                      onBeforeHook={handleBefore}
-                      onClientCancelHook={handleClientCancel}
-                      onServerErrorHook={handleServerError}
-                      onSuccessHook={handleSuccess}
-                    />
-                  )}
-                  <div className="my1" />
-                  <Feedback
-                    className="mb2"
-                    loading={disabled}
-                    errorMsg={errorMsg}
-                    successMsg={successMsg}
-                  />
-                </React.Fragment>
-              );
-            }}
-          </FormProps>
-        );
-      }}
-    </PWABtnProps>
-  </div>
-);
+                    );
+                  }
+
+                  return (
+                    <React.Fragment>
+                      <p>Enable Push notifications</p>
+                      {subscribed ? (
+                        <UnsubscribeBtn
+                          disabled={disabled}
+                          onBeforeHook={handleBefore}
+                          onClientCancelHook={handleClientCancel}
+                          onServerErrorHook={handleServerError}
+                          onSuccessHook={() => {
+                            handleSubscriptionChange({ subscribed: false });
+                            handleSuccess();
+                          }}
+                        />
+                      ) : (
+                        <SubscribeBtn
+                          disabled={disabled}
+                          onBeforeHook={handleBefore}
+                          onClientCancelHook={handleClientCancel}
+                          onServerErrorHook={handleServerError}
+                          onSuccessHook={() => {
+                            handleSubscriptionChange({ subscribed: true });
+                            handleSuccess();
+                          }}
+                        />
+                      )}
+                      <div className="my1" />
+                      {subscribed && (
+                        <PushBtn
+                          disabled={disabled}
+                          onBeforeHook={handleBefore}
+                          onClientCancelHook={handleClientCancel}
+                          onServerErrorHook={handleServerError}
+                          onSuccessHook={handleSuccess}
+                        />
+                      )}
+                      <div className="my1" />
+                      <Feedback
+                        className="mb2"
+                        loading={disabled}
+                        errorMsg={errorMsg}
+                        successMsg={successMsg}
+                      />
+                    </React.Fragment>
+                  );
+                }}
+              </FormProps>
+            );
+          }}
+        </PWABtnProps>
+      </div>
+    );
+  }
+}
 
 HomePage.propTypes = {
   curUser: propType(userFragment).isRequired,
