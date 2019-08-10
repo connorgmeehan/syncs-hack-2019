@@ -27,8 +27,6 @@
     "graphql-anywhere": "^4.1.23",
     "graphql-tag": "^2.10.0",
     "graphql-tools": "^4.0.3",
-    "grommet": "^2.7.4",
-    "grommet-icons": "^4.2.0",
     "history": "^4.7.2",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",

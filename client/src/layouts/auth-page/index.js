@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Title from '../../components/common/title';
-import Subtitle from '../../components/common/subtitle';
+import { Typography } from '@material-ui/core';
 
 //------------------------------------------------------------------------------
 // STYLE:
@@ -20,8 +19,13 @@ const AuthPageLayout = ({
   link,
 }) => (
   <MaxWidth className="mx-auto">
-    {title && <Title>{title}</Title>}
-    {subtitle && <Subtitle text={subtitle} link={link} />}
+    {title && <Typography variant="h2" align="center">{title}</Typography>}
+    {subtitle && (
+      <Typography variant="subtitle1" align="center">
+        {subtitle}
+        {link && link}
+      </Typography>
+    )}
     {children}
   </MaxWidth>
 );

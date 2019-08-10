@@ -8,11 +8,10 @@ import LogoutBtn from '../../components/auth/logout-btn';
 import SubscribeBtn from '../../components/pwa/subscribe-btn';
 import UnsubscribeBtn from '../../components/pwa/unsubscribe-btn';
 import PushBtn from '../../components/pwa/push-btn';
-import Title from '../../components/common/title';
 import Feedback from '../../components/common/feedback';
 import Alert from '../../components/common/alert';
 import Loading from '../../components/common/loading';
-
+import Typography from '@material-ui/core/Typography';
 //------------------------------------------------------------------------------
 // STYLE:
 //------------------------------------------------------------------------------
@@ -25,7 +24,7 @@ const Json = styled.pre`
 //------------------------------------------------------------------------------
 const HomePage = ({ curUser }) => (
   <div>
-    <Title>Home Page</Title>
+    <Typography align="center" variant="h2">Home Page</Typography>
     <div className="mb1" />
     <h3>Current User</h3>
     <Json>
