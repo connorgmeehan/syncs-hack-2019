@@ -26,9 +26,12 @@ const PracticesList = ({ suburb, speciality }) => {
     >
       {({loading, error, data }) => {
         console.log(data);
-        if(loading) {
-          return <h1>Loading</h1>
-        } 
+        if(error)
+          return <h4>Error: Couldn't get practices.</h4>
+        if (!loading && data && data.getPracticeBy) {
+          if (data.getPracticeBy.length <= 0) {
+            return <h4>No practices</h4>
+          }
           return data.getPracticeBy.map((practice, key) => <PracticeCard key={key}
             _id={practice._id}
             name={practice.name}
@@ -37,6 +40,9 @@ const PracticesList = ({ suburb, speciality }) => {
             speciality={practice.speciality}
             suburb={practice.suburb}
            /> )
+        } else {
+          return <h4>Loading practices...</h4>
+        }
       }}
     </Query>
   );

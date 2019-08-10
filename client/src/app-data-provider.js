@@ -5,12 +5,15 @@ import React from 'react';
 const AppData = React.createContext();
 
 export class AppDataProvider extends React.PureComponent {
-  state = {
-    username: null,
-    searchedSuburb: null,
-    searchedSpeciality: null,
-    practiceResults: [],
-    selectedPractitionerId: null
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: null,
+      searchedSuburb: "Wendsleydale",
+      searchedSpeciality: "S",
+      practiceResults: [],
+      selectedPractitionerId: null
+    }
   }
   selectPractitioner = (practitioner) => {
     this.setState({selectedPractitionerId: practitioner});
