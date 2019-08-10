@@ -60,7 +60,6 @@ const getPracticeById = (root, args) => {
 };
 
 const createPractice = (root, args) => {
-  Object.keys(args).forEach((el) => { console.log(el); });
   const {
     name, lat, lon, suburb, speciality,
   } = args;

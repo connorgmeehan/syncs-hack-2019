@@ -30,6 +30,7 @@ const PracticesList = ({ suburb, speciality }) => {
           return <h1>Loading</h1>
         } 
           return data.getPracticeBy.map((practice, key) => <PracticeCard key={key}
+            _id={practice._id}
             name={practice.name}
             lat={practice.lat}
             lon={practice.lon}

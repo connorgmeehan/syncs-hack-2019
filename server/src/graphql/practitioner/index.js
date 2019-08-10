@@ -15,6 +15,7 @@ type Query {
 
 type Mutation {
   createPractitioner(
+      practiceId: String!
       name: String!
       description: String!
       imageurl: String

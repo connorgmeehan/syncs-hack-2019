@@ -6,12 +6,12 @@ type Tag {
   commentId: String!
   practitionerId: String!
   text: String!
-  isEmpathy: String!
+  isEmpathy: Boolean!
 }
 
 type Query {
-  getTagsByCommentId(commentId: Int!): [Tag]
-  getTagsByPractitionerId(practitionerId: Int!): [Tag]
+  getTagsByCommentId(commentId: String!): [Tag]
+  getTagsByPractitionerId(practitionerId: String!): [Tag]
 }
 
 type Mutation {
@@ -19,19 +19,27 @@ type Mutation {
     commentId: String!,
     practitionerId: String!,
     text: String!,
-    isEmpathy: String!
+    isEmpathy: Boolean!
   ): Tag
 }
 `;
 
 const createTag = (root, args) => {
-  const { text } = args;
-  return Tag.createTag({ text });
+  console.log('tags::createTag', args);
+  const { commentId, practitionerId, text, isEmpathy } = args;
+  return Tag.createTag({ commentId, practitionerId, text, isEmpathy });
+};``
+
+const getTagsByCommentId = (root, args) => {
+  const {commentId} = args;
+  return Tag.getTagsByCommentId({ commentId })
 };
 
-const getTagsByCommentId = ({ commentId }) => Tag.getTagsByCommentId({ commentId });
-
-const getTagsByPractitionerId = ({ practitionerId }) => Tag.getTagsByPractitionerId({ practitionerId });
+const getTagsByPractitionerId = (root, args) => {
+  console.log('Tags::getTagsByPractitionerId', root, args);
+  const {practitionerId} = args;
+  return Tag.getTagsByPractitionerId({ practitionerId })
+};
 
 const Mutation = {
   createTag,
