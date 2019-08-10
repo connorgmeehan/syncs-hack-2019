@@ -9,6 +9,6 @@ import HeaderTitle from './components/header-title';
 import Routes from './routes';
 import registerServiceWorker from './register-sw';
 
-ReactDOM.render(<App component={HeaderTitle} />, document.getElementById('header-title'));
+ReactDOM.render(<App component={HeaderTitle} />, document.getElementById('header'));
 ReactDOM.render(<App component={Routes} />, document.getElementById('main'));
 registerServiceWorker();
