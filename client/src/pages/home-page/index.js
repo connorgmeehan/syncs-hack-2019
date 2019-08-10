@@ -1,10 +1,13 @@
+/* eslint-disable react/no-unused-state */
+/* eslint-disable react/destructuring-assignment */
 import React, { useContext } from 'react';
 import { propType } from 'graphql-anywhere';
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
-import AppDataProvider from '../../app-data-provider';
+import InputBase from '@material-ui/core/InputBase';
+import withAppData from '../../app-data-provider';
 import { PWABtnProps, FormProps } from '../../render-props';
 import { withUser } from '../../global-data-provider';
 import userFragment from '../../graphql/user/fragment/user';
@@ -15,7 +18,7 @@ import PushBtn from '../../components/pwa/push-btn';
 import Feedback from '../../components/common/feedback';
 import Alert from '../../components/common/alert';
 import Loading from '../../components/common/loading';
-import InputBase from '@material-ui/core/InputBase';
+
 
 //------------------------------------------------------------------------------
 // STYLE:
@@ -26,20 +29,26 @@ const Json = styled.pre`
 `;
 class HomePage extends React.PureComponent {
   state = {
-    specialist: '',
+    speciality: '',
     suburb: '',
   }
 
-  handleValidation() {
-    console.log('onSearchSubmit');
-    if (this.state.specialist && this.state.suburb) {
-      const { setSuburbAndState } = useContext(AppDataProvider);
-      console.log(setSuburbAndState);
+  handleSubmit () {
+    if(this.state.suburb && this.state.speciality) {
+      const {setSuburbAndState} = this.props.appdata;
+      setSuburbAndState(this.state.suburb, this.state.speciality);
+    } else {
+      this.handleError()
     }
   }
 
+  handleError() {
+    console.log('error', this.state);
+  }
+
   render() {
-    const { curUser } = this.props;
+    const {appdata} = this.props;
+    console.log(appdata);
     return (
       <>
         <div>
@@ -51,19 +60,17 @@ class HomePage extends React.PureComponent {
               <Typography variant="h5" className="secondaryInitialText">Whether you’ve had a hard time with a healthcare provider before or you’ve never known where to look.</Typography>
               <Typography variant="h5" className="secondaryInitialText">We are the place to start.</Typography>
             </div>
-
-
-            <Typography variant="h2">I am looking for a</Typography>
-            <InputBase fullWidth classes={{ input: "maintextinput" }} placeholder="specialist" />
-            <Typography variant="h2" className="secondaryText">around this</Typography>
-            <InputBase fullWidth classes={{ input: "maintextinput" }} placeholder="suburb" />
-            <Button className="searchbtn" color="primary" size="large" variant="contained" fullWidth={true} >
-              Search
-          </Button>
+            <FormControl>
+              <Typography variant="h2">I am looking for a</Typography>
+              <InputBase onChange={e => this.setState({ speciality: e.target.value })} required fullWidth classes={{ input: 'maintextinput' }} placeholder="specialist" />
+              <Typography variant="h2" className="secondaryText">around this</Typography>
+              <InputBase onChange={e => this.setState({ suburb: e.target.value })} required fullWidth classes={{ input: 'maintextinput' }} placeholder="suburb" />
+                  <Button onClick={() => this.handleSubmit()}  className="searchbtn" color="primary" size="large" variant="contained" fullWidth>search </Button>
+            </FormControl>
             <Typography variant="h3" align="center" className="orText">or</Typography>
-            <Button className="searchbtn" color="secondary" size="large" variant="contained" fullWidth={true} >
+            <Button className="searchbtn" color="secondary" size="large" variant="contained" fullWidth>
               Leave a recommendation
-          </Button>
+            </Button>
           </div>
           <div className="mb2" />
           <LogoutBtn />
@@ -118,17 +125,17 @@ class HomePage extends React.PureComponent {
                             }}
                           />
                         ) : (
-                            <SubscribeBtn
-                              disabled={disabled}
-                              onBeforeHook={handleBefore}
-                              onClientCancelHook={handleClientCancel}
-                              onServerErrorHook={handleServerError}
-                              onSuccessHook={() => {
-                                handleSubscriptionChange({ subscribed: true });
-                                handleSuccess();
-                              }}
-                            />
-                          )}
+                          <SubscribeBtn
+                            disabled={disabled}
+                            onBeforeHook={handleBefore}
+                            onClientCancelHook={handleClientCancel}
+                            onServerErrorHook={handleServerError}
+                            onSuccessHook={() => {
+                              handleSubscriptionChange({ subscribed: true });
+                              handleSuccess();
+                            }}
+                          />
+                        )}
                         <div className="my1" />
                         {subscribed && (
                           <PushBtn
@@ -163,4 +170,4 @@ HomePage.propTypes = {
   curUser: propType(userFragment).isRequired,
 };
 
-export default withUser(HomePage);
+export default withUser(withAppData(HomePage));

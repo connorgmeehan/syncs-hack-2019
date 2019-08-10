@@ -2,9 +2,9 @@
 /* eslint-disable react/no-unused-state */
 import React from 'react';
 
-const Context = React.createContext();
+const AppData = React.createContext();
 
-class AppDataProvider extends React.PureComponent {
+export class AppDataProvider extends React.PureComponent {
   state = {
     username: null,
     searchedSuburb: null,
@@ -18,15 +18,22 @@ class AppDataProvider extends React.PureComponent {
 
   render() {
     return (
-      <Context.Provider value={{
+      <AppData.Provider value={{
         state: this.state,
         setSuburbAndState: this.setSuburbAndState,
       }}
       >
         { this.props.children }
-      </Context.Provider>
+      </AppData.Provider>
     );
   }
 }
 
-export default AppDataProvider;
+const withContext = Component => props => (
+  <AppData.Consumer>
+    {(context) => <Component {...props} appdata={context} />}
+  </AppData.Consumer>
+);
+
+
+export default withContext;
