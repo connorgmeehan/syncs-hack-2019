@@ -50,8 +50,7 @@ const getPracticeBy = (root, args) => {
   } if (speciality) {
     return Practice.getPracticeBySpeciality({ speciality });
   }
-
-  return null;
+  return { error: 'No input provided' };
 };
 
 const getPracticeById = (root, args) => {
@@ -61,7 +60,6 @@ const getPracticeById = (root, args) => {
 };
 
 const createPractice = (root, args) => {
-  Object.keys(args).forEach((el) => { console.log(el); });
   const {
     name, lat, lon, suburb, speciality,
   } = args;

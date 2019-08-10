@@ -15,6 +15,7 @@ type Query {
 
 type Mutation {
   createPractitioner(
+      practiceId: String!
       name: String!
       description: String!
       imageurl: String
@@ -36,6 +37,7 @@ const getPractitionerFromId = (root, args) => {
 };
 
 const getPractitionersFromPracticeId = (root, args) => {
+  console.log('Practitioner::getPractitionersFromPracticeId', args);
   const { practiceId } = args;
   return Practitioner.getPractitionersFromPracticeId({ practiceId });
 };
