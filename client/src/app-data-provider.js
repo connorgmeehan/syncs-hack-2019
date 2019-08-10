@@ -13,6 +13,7 @@ export class AppDataProvider extends React.PureComponent {
   }
 
   setSuburbAndState = (suburb, speciality) => {
+    console.log(`AppDataProvider::setSuburbAndSpecialit ${suburb} ${speciality}`)
     this.setState({ searchedSuburb: suburb, searchedSpeciality: speciality });
   }
 

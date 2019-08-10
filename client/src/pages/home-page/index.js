@@ -28,17 +28,23 @@ const Json = styled.pre`
   white-space: pre-wrap;
 `;
 class HomePage extends React.PureComponent {
-  state = {
-    speciality: '',
-    suburb: '',
+  constructor(props) {
+    super(props);
+    const { appdata } = this.props;
+    console.log(appdata);
+    this.state = {
+      speciality: '',
+      suburb: '',
+    };
   }
 
-  handleSubmit () {
-    if(this.state.suburb && this.state.speciality) {
-      const {setSuburbAndState} = this.props.appdata;
+  handleSubmit() {
+    if (this.state.suburb && this.state.speciality) {
+      const { setSuburbAndState } = this.props.appdata;
       setSuburbAndState(this.state.suburb, this.state.speciality);
+      this.props.history.push('/search');
     } else {
-      this.handleError()
+      this.handleError();
     }
   }
 
@@ -47,8 +53,6 @@ class HomePage extends React.PureComponent {
   }
 
   render() {
-    const {appdata} = this.props;
-    console.log(appdata);
     return (
       <>
         <div>
@@ -65,7 +69,7 @@ class HomePage extends React.PureComponent {
               <InputBase onChange={e => this.setState({ speciality: e.target.value })} required fullWidth classes={{ input: 'maintextinput' }} placeholder="specialist" />
               <Typography variant="h2" className="secondaryText">around this</Typography>
               <InputBase onChange={e => this.setState({ suburb: e.target.value })} required fullWidth classes={{ input: 'maintextinput' }} placeholder="suburb" />
-                  <Button onClick={() => this.handleSubmit()}  className="searchbtn" color="primary" size="large" variant="contained" fullWidth>search </Button>
+              <Button onClick={() => this.handleSubmit()} className="searchbtn" color="primary" size="large" variant="contained" fullWidth>search </Button>
             </FormControl>
             <Typography variant="h3" align="center" className="orText">or</Typography>
             <Button className="searchbtn" color="secondary" size="large" variant="contained" fullWidth>

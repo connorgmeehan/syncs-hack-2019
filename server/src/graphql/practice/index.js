@@ -50,8 +50,7 @@ const getPracticeBy = (root, args) => {
   } if (speciality) {
     return Practice.getPracticeBySpeciality({ speciality });
   }
-
-  return null;
+  return { error: 'No input provided' };
 };
 
 const getPracticeById = (root, args) => {

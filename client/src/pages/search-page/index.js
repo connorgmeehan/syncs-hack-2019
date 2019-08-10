@@ -1,18 +1,16 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/no-unused-state */
 import React from 'react';
-import { withApollo } from 'react-apollo';
 import { FormProps } from '../../render-props';
 import Feedback from '../../components/common/feedback';
 import PracticesList from '../../components/custom/PracticesList';
-import AppDataProvider from '../../app-data-provider';
+import withContext from '../../app-data-provider';
 
 class SearchPage extends React.PureComponent {
-  state = {
-    results: null,
-  }
-
   render() {
-  return (
+    console.log(this.props);
+    const { searchedSuburb, searchedSpeciality } = this.props.appdata.state;    
+    return (
       <FormProps>
         {({
           disabled,
@@ -26,15 +24,7 @@ class SearchPage extends React.PureComponent {
           handleSuccess,
         }) => (
           <>
-            <AppDataProvider.Context>
-              {(context) => {
-                console.log(context);
-                return (
-                  <PracticesList />
-                );
-              }}
-            </AppDataProvider.Context>
-
+            <PracticesList suburb={searchedSuburb} speciality={searchedSpeciality} />
             <div className="mb2" />
             <Feedback
               loading={disabled}
@@ -48,4 +38,4 @@ class SearchPage extends React.PureComponent {
   }
 }
 
-export default withApollo(SearchPage);
+export default withContext(SearchPage);
