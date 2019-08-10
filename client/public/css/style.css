@@ -248,3 +248,42 @@ form {
   margin-right: auto;
   margin-top: 10vh;
 }
+
+/* Login Page */
+#signUpQ {
+  margin-top: 12px;
+}
+
+.jNWhwd {
+  color: #2344A5 !important;
+  margin-left: 9px;
+}
+
+.MuiButton-root-97 {
+  text-transform: none !important;
+}
+
+.MuiInputLabel-animated-57 {
+  border: none !important;
+  font-family: 'SF Compact Display' !important;
+  font-weight: 700 !important;
+  font-size: 32px !important;
+  line-height: 38px !important;
+  color: #DADDE4 !important;
+}
+
+.MuiInput-underline-71:after {
+  border: none !important;
+}
+
+.MuiInput-underline-71:before {
+  border: none !important;
+}
+
+.evyUks {
+  margin-top: 48px;
+}
+
+.MuiFormControl-marginNormal-46 {
+  margin-top: 24px !important;
+}

@@ -21,7 +21,7 @@ const AuthPageLayout = ({
   <MaxWidth className="mx-auto">
     {title && <Typography variant="h2" align="center">{title}</Typography>}
     {subtitle && (
-      <Typography variant="subtitle1" align="center">
+      <Typography variant="h5" id="signUpQ" align="center">
         {subtitle}
         {link && link}
       </Typography>
