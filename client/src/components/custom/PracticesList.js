@@ -37,7 +37,6 @@ const PracticesList = ({ suburb, speciality }) => {
             speciality={practice.speciality}
             suburb={practice.suburb}
            /> )
-        
       }}
     </Query>
   );

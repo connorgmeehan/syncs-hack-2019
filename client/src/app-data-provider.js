@@ -10,8 +10,11 @@ export class AppDataProvider extends React.PureComponent {
     searchedSuburb: null,
     searchedSpeciality: null,
     practiceResults: [],
+    selectedPractitionerId: null
   }
-
+  selectPractitioner = (practitioner) => {
+    this.setState({selectedPractitionerId: practitioner});
+  }
   setSuburbAndState = (suburb, speciality) => {
     console.log(`AppDataProvider::setSuburbAndSpecialit ${suburb} ${speciality}`)
     this.setState({ searchedSuburb: suburb, searchedSpeciality: speciality });
@@ -22,6 +25,7 @@ export class AppDataProvider extends React.PureComponent {
       <AppData.Provider value={{
         state: this.state,
         setSuburbAndState: this.setSuburbAndState,
+        selectPractitioner: this.selectPractitioner,
       }}
       >
         { this.props.children }
