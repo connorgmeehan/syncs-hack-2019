@@ -33,7 +33,7 @@ const PracticeCard = ({
             return <h1>...</h1>;
           } else if (!loading) {
             console.log(data);
-            if (data && data.getPractitionersFromPracticeId) {
+            if (data && data.getPractitionersFromPracticeId.length) {
               return data.getPractitionersFromPracticeId.map((practice, key) => <PractitionerSegment 
                   key={key}
                   _id={practice._id}

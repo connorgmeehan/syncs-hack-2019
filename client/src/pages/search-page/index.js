@@ -10,10 +10,11 @@ import withContext from '../../app-data-provider';
 class SearchPage extends React.PureComponent {
   render() {
     console.log(this.props);
-    const { searchedSuburb, searchedSpeciality } = this.props.appdata.state;    
+    const { searchedSpeciality, searchedSuburb } = this.props.appdata.state;    
     const defaultControls = {
       fullscreenControls: false,
     };
+    console.log(searchedSpeciality, searchedSuburb);
     return (
       <FormProps>
         {({
@@ -34,7 +35,7 @@ class SearchPage extends React.PureComponent {
               containerElement={<div style={{ height: `400px` }} />}
               mapElement={<div style={{ height: `100%` }} />}
               defaultOptions={defaultControls}
-              suburb={searchedSpeciality}
+              suburb={searchedSuburb}
               speciality={searchedSpeciality}
                />
             <PracticesList suburb={searchedSuburb} speciality={searchedSpeciality} />
