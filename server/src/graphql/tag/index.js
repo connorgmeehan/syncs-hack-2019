@@ -17,9 +17,9 @@ type Query {
 type Mutation {
   createTag(
     commentId: String!,
-    practitionerId: String!
-    text: String!
-    isEmpathy: !String
+    practitionerId: String!,
+    text: String!,
+    isEmpathy: String!
   ): Tag
 }
 `;

@@ -6,12 +6,6 @@ const ReviewSchema = new mongoose.Schema({
   practitionerId: String,
   createdAt: { type: Date, default: Date.now },
   text: String,
-  comments: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Tag',
-    },
-  ],
 });
 
 ReviewSchema.statics.createReview = async function ({

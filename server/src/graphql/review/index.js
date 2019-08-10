@@ -6,7 +6,6 @@ type Review {
     practitionerId: String!
     createdAt: Date!
     text: String!
-    tags: [String]
 }
 
 type Query {
@@ -16,9 +15,9 @@ type Query {
 
 type Mutation {
     createReview(
-        userId: String!
-        userName: String!
-        practitionerId: String!
+        userId: String!,
+        userName: String!,
+        practitionerId: String!,
         text: String!
     ): Review
 }
