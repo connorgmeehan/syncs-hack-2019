@@ -1,6 +1,7 @@
 import React from 'react';
 import { propType } from 'graphql-anywhere';
 import styled from 'styled-components';
+import Typography from '@material-ui/core/Typography';
 import { PWABtnProps, FormProps } from '../../render-props';
 import { withUser } from '../../global-data-provider';
 import userFragment from '../../graphql/user/fragment/user';
@@ -11,7 +12,6 @@ import PushBtn from '../../components/pwa/push-btn';
 import Feedback from '../../components/common/feedback';
 import Alert from '../../components/common/alert';
 import Loading from '../../components/common/loading';
-import Typography from '@material-ui/core/Typography';
 //------------------------------------------------------------------------------
 // STYLE:
 //------------------------------------------------------------------------------
