@@ -8,6 +8,8 @@ console.log(
   '\nprocess.env.NODE_ENV', NODE_ENV,
   '\nprocess.env.MONGO_URL', MONGO_URL,
   '\nprocess.env.MONGO_URL_TEST', MONGO_URL_TEST,
+  '\nprocess.env.MONGO_DB_NAME', MONGO_DB_NAME,
+  '\nprocess.env.MONGO_DB_NAME', MONGO_DB_NAME,
 );
 
 const MONGO = NODE_ENV === 'test' ? MONGO_URL_TEST : MONGO_URL;
