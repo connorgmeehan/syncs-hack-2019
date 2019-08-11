@@ -12,11 +12,12 @@ query getTagsByPractitionerId($practitionerId: String!){
 }
 `;
 
-const PractitionerSegment = ({_id, name}) => {
+const PractitionerSegment = ({_id, name, createdDate}) => {
   console.log(_id, name);
   return (
     <div>
-      <h1>{name}</h1>
+      <h1 className="pracPerson">{name}</h1>
+      <p>{createdDate}</p>
 
       {_id && 
         <Query
@@ -30,7 +31,7 @@ const PractitionerSegment = ({_id, name}) => {
             console.log(data);
             if (data && data.getTagsByPractitionerId && data.getTagsByPractitionerId.length > 0) {
               return data.getTagsByPractitionerId.map((tag, key) => <div key={key} 
-                className={`practioner-segment practioner-segment-${tag.isEmpath ? "empathy" : "skill"}`}>
+                className={`practioner-segment practioner-segment-${tag.isEmpathy ? "empathy" : "skill"}`}>
                 <h5>{tag.text}</h5>
               </div> );
             }
