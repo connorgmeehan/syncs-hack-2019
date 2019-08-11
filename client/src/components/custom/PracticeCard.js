@@ -18,11 +18,11 @@ const PracticeCard = ({
 }) => {
   console.log(_id);
   return (
-    <Card>
+   <Card className="pracCard">
       <CardContent>
-        <Typography variant="h5">{name}</Typography>
-        <Typography variant="caption">Address</Typography>
-        <Typography variant="caption">Phone</Typography>
+        <Typography className="pracName" variant="h5">{name}</Typography>
+        <Typography className="pracAddress" variant="caption">Address</Typography>
+        <Typography className="pracPhone" variant="caption">Phone</Typography>
       </CardContent>
       <Query
         query={PRACTITIONERS_QUERY}
@@ -38,9 +38,10 @@ const PracticeCard = ({
                   key={key}
                   _id={practice._id}
                   name={practice.name}
+                  createdDate={practice.createdDate}
                 /> );
             } else {
-              return <h1>this gp doesn't have practitioners yet</h1>
+              return <h1 className="noPrac">this gp doesn't have practitioners yet</h1>
             }
           }
         }}
