@@ -67,8 +67,10 @@ class HomePage extends React.PureComponent {
           <Typography variant="h5" className="secondaryInitialText">Whether you’ve had a hard time with a healthcare provider before or you’ve never known where to look.</Typography>
           <Typography variant="h5" className="secondaryInitialText">We are the place to start.</Typography>
         
+          {/* Sourced From - Codepen by Shak Daniel https://codepen.io/shakdaniel/pen/JoKOQx */}
           <a href="#pageScroll" id="scrollTransition">
-          <svg xmlns="http://www.w3.org/2000/svg" className="downArrow" width="36" height="36" viewBox="0 0 36 36"><path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/></svg>
+          <div className="icon-scroll" id="downArrow"></div>
+          {/* <svg xmlns="http://www.w3.org/2000/svg" className="downArrow" width="36" height="36" viewBox="0 0 36 36"><path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/></svg> */}
           </a>
         </div>
 

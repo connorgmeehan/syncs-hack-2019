@@ -13,13 +13,14 @@ const theme = createMuiTheme({
       fontWeight: 'Bold',
       fontSize: '32px',
       lineHeight: '38px',
-
+      color: '#202226',
     },
     h3: {
       fontFamily: 'SF Compact Display',
       fontWeight: 'Semibold',
       fontSize: '18px',
       lineHeight: '38px',
+      color: '#202226',
     },
 
     h4: {
@@ -27,6 +28,7 @@ const theme = createMuiTheme({
       fontWeight: 'Semibold',
       fontSize: '18px',
       lineHeight: '27px',
+      color: '#202226',
     },
 
     h5: {
@@ -34,6 +36,7 @@ const theme = createMuiTheme({
       fontWeight: '400',
       fontSize: '12px',
       lineHeight: '18px',
+      color: '#202226',
     }
 
   
