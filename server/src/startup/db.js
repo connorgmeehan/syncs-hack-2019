@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const fixtures = require('../fixtures');
 
-const { NODE_ENV, MONGO_URL, MONGO_URL_TEST } = process.env;
+const { NODE_ENV, MONGO_URL, MONGO_URL_TEST, MONGO_DB_NAME, MONGO_DB_NAME_TEST } = process.env;
 
 console.log(
   '\nprocess.env.NODE_ENV', NODE_ENV,
