@@ -11,11 +11,11 @@ console.log(
 );
 
 const MONGO = NODE_ENV === 'test' ? MONGO_URL_TEST : MONGO_URL;
-const MONGO_DB_NAME = NODE_ENV === 'test' ? MONGO_DB_NAME_TEST : MONGO_DB_NAME;
+const MONGO_NAME = NODE_ENV === 'test' ? MONGO_DB_NAME_TEST : MONGO_DB_NAME;
 
 console.log(MONGO_URL, MONGO_DB_NAME)
 
-mongoose.connect(MONGO, { dbName: MONGO_DB_NAME, useNewUrlParser: true });
+mongoose.connect(MONGO, { dbName: MONGO_NAME, useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 
 const db = mongoose.connection;
